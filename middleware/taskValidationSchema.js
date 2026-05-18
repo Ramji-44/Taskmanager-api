@@ -52,9 +52,8 @@ const assigneeEmailInput = {
         notEmpty: {
             errorMessage: "Assignee email must not be empty"
         },
-        matches: {
-            options: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            errorMessage: "Invalid Email provided"
+        isEmail : {
+            errorMessage : "Invalid email provided"
         }
     }
 }
@@ -98,9 +97,8 @@ const urlInput = {
         notEmpty: {
             errorMessage: "URL must not be empty"
         },
-        matches: {
-            options: /^(https?:\/\/|www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z0-9]+)+([\/?#].*)?$/,
-            errorMessage: "provide a valid URL"
+        isURL: {
+            errorMessage : "Invalid URL provided"
         }
     }
 }
@@ -156,8 +154,8 @@ const taskTypeInput = {
         notEmpty: {
             errorMessage: "Task type should not be empty"
         },
-        isJSON: {
-            errorMessage: "Task type must be valid JSON"
+        isArray : {
+            errorMessage : "Task type must be an array"
         }
     }
 }

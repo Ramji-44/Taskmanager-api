@@ -5,8 +5,8 @@ const getAllTasks = async (req, res) => {
         const data = await service.listAll()
         res.status(200).json(data)
     }
-    catch (err) {
-        return res.status(500).json({ error: err.message })
+    catch (error) {
+        return res.status(500).json({ error: error.message })
     }
 }
 
@@ -16,7 +16,7 @@ const getById = async (req, res) => {
         res.status(200).json(data)
     }
     catch (error) {
-        return res.status(500).json({ error: err.message })
+        return res.status(error.status || 500).json({ error: error.message })
     }
 }
 
@@ -25,8 +25,8 @@ const createTask = async (req, res) => {
         const data = await service.create(req.body)
         res.status(201).json(data)
     }
-    catch (err) {
-        return res.status(500).json({ error: err.message })
+    catch (error) {
+        return res.status(error.status || 500).json({ error: error.message })
     }
 }
 
@@ -36,7 +36,7 @@ const putTask = async (req, res) => {
         res.status(200).json(data)
     }
     catch (error) {
-        return res.status(500).json({ error: err.message })
+        return res.status(error.status || 500).json({ error: error.message })
     }
 }
 
@@ -45,8 +45,8 @@ const patchTask = async (req, res) => {
         const data = await service.modify(req.params.id, req.body)
         res.status(200).json(data)
     }
-    catch (errro) {
-        return res.status(500).json({ error: err.message })
+    catch (error) {
+        return res.status(error.status || 500).json({ error: error.message })
     }
 }
 
@@ -56,7 +56,7 @@ const deleteTask = async (req, res) => {
         res.status(200).json({ Message: "Task Deleted Successfully" })
     }
     catch (error) {
-        return res.status(500).json({ error: err.message })
+        return res.status(error.status || 500).json({ error: error.message })
     }
 }
 

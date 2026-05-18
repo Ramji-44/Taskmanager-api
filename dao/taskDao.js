@@ -1,28 +1,28 @@
+const { response } = require("express")
 const db = require("./models")
 
 const getAll = async () => {
-    return db.Task.findAll({
-        attributes: { exclude: ["createdAt", "updatedAt"] }
-    })
+    return db.Task.findAll()
 }
 
 const getById = async (id) => {
-    return db.Task.findByPk(id, { attributes: { exclude: ["created", "updatedAt"] } })
+    return db.Task.findByPk(id)
 }
 
-const findByTaskName = async (taskName) => {   // duplicate task found
+const findByTaskName = async (taskName) => {   // duplicate task check
     return db.Task.findOne({
-        where: { taskName }
+        where: { taskName: taskName }
     })
 }
 
 const createRow = async (body) => {
     const newTask = await db.Task.create(body)
-    return newTask
+    const { createdAt, updatedAt, ...response } = newTask.dataValues
+    return response
 }
 
-const replaceRow = async (body) => {
-    const putUpdate = {
+const replaceRow = async (id, body) => {
+    await db.Task.update({
         taskName: body.taskName ?? null,
         assigneeName: body.assigneeName ?? null,
         assigneeEmail: body.assigneeEmail ?? null,
@@ -35,16 +35,19 @@ const replaceRow = async (body) => {
         priority: body.priority ?? null,
         taskType: body.taskType ?? null,
         statusType: body.statusType ?? null
+    },
+        { where: { id } })
+    return {
+        message: "Task Updated Successfully"
     }
-
-    const updateTask = await db.Task.update(putUpdate, { where: { id } })
-    return { id, ...putUpdate }
 }
 
-const modifyRow = async (body) => {
-    const patchUpdate = await db.Task.update(body, { where: { id } })
-    return { id, ...patchUpdate }
+
+const modifyRow = async (id, body) => {
+    await db.Task.update(body, { where: { id } })
+    return { message: "Task Updated Successfully" }
 }
+
 
 const deleteRow = async (id) => {
     const taskId = await db.Task.findByPk(id)

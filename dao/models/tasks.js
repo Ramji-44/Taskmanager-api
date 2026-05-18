@@ -56,7 +56,10 @@ module.exports = (sequelize, DataTypes) => {
     },
         {
             tableName: "tasks",
-            timestamps: true
+            timestamps: true,
+            defaultScope: {
+                attributes: { exclude: ["createdAt", "updatedAt"] }
+            }
         })
     return Task
 }

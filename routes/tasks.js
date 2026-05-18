@@ -10,3 +10,4 @@ router.put('/:id', taskController.putTask)
 router.patch('/:id', taskController.patchTask)
 router.delete('/:id', taskController.deleteTask)
 
+module.exports = router

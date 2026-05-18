@@ -60,4 +60,4 @@ const deleteTask = async (req, res) => {
     }
 }
 
-module.exports = { getAllTasks, getById, createTask, putTask, deleteTask }
+module.exports = { getAllTasks, getById, createTask, putTask, patchTask, deleteTask }

@@ -165,10 +165,6 @@ const statusTypeInput = {
         in: ["body"],
         notEmpty: {
             errorMessage: "Status must not be empty"
-        },
-        isIn: {
-            options: [["pending", "in progress", "completed"]],
-            errorMessage: "Invalid status provided"
         }
     }
 }

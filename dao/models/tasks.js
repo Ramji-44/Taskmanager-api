@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         statusType: {
-            type: DataTypes.ENUM("pending", "in progress", "completed"),
+            type: DataTypes.STRING(50),
             allowNull: false
         }
     },

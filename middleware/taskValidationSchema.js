@@ -165,6 +165,50 @@ const taskTypeInput = {
     }
 }
 
+const statusTypeInput = {
+    statusType: {
+        in: ["body"],
+        notEmpty: {
+            errorMessage: "Status must not be empty"
+        }
+    }
+}
+
+const getByIdVS = {
+    ...id
+}
+
+const postTaskVS = {
+    ...taskNameInput,
+    ...assigneeNameInput,
+    ...assigneeEmailInput,
+    ...dueDateInput,
+    ...dueTimeInput,
+    ...hoursInput,
+    ...urlInput,
+    ...descriptionInput,
+    ...progressInput,
+    ...priorityInput,
+    ...taskTypeInput,
+    ...statusTypeInput
+}
+
+const putTaskVS = {
+    ...id,
+    ...taskNameInput,
+    ...assigneeNameInput,
+    ...assigneeEmailInput,
+    ...dueDateInput,
+    ...dueTimeInput,
+    ...hoursInput,
+    ...urlInput,
+    ...descriptionInput,
+    ...progressInput,
+    ...priorityInput,
+    ...taskTypeInput,
+    ...statusTypeInput
+}
+
 const deleteTaskVS = {
     ...id
 }

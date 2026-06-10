@@ -54,7 +54,12 @@ const assigneeEmailInput = {
         },
         isEmail : {
             errorMessage : "Invalid email provided"
+        },
+        isLength: {
+            options: { max: 250 },
+            errorMessage: "Email must not exceed 250 characters"
         }
+        
     }
 }
 

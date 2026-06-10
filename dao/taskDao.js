@@ -42,16 +42,9 @@ const replaceRow = async (id, body) => {
     }
 }
 
-
-const modifyRow = async (id, body) => {
-    await db.Task.update(body, { where: { id } })
-    return { message: "Task Updated Successfully" }
-}
-
-
 const deleteRow = async (id) => {
     const taskId = await db.Task.findByPk(id)
     return await taskId.destroy()
 }
 
-module.exports = { getAll, getById, findByTaskName, createRow, replaceRow, modifyRow, deleteRow }
+module.exports = { getAll, getById, findByTaskName, createRow, replaceRow, deleteRow }

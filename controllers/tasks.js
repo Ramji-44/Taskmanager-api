@@ -40,16 +40,6 @@ const putTask = async (req, res) => {
     }
 }
 
-const patchTask = async (req, res) => {
-    try {
-        const data = await service.modify(req.params.id, req.body)
-        res.status(200).json(data)
-    }
-    catch (error) {
-        return res.status(error.status || 500).json({ error: error.message })
-    }
-}
-
 const deleteTask = async (req, res) => {
     try {
         const data = await service.remove(req.params.id)
@@ -60,4 +50,4 @@ const deleteTask = async (req, res) => {
     }
 }
 
-module.exports = { getAllTasks, getById, createTask, putTask, patchTask, deleteTask }
+module.exports = { getAllTasks, getById, createTask, putTask, deleteTask }

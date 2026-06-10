@@ -36,21 +36,6 @@ const replace = async (id, body) => {
     return taskDao.replaceRow(id, body)
 }
 
-
-const modify = async (id, body) => {
-    const task = await taskDao.getById(id)
-    if (!task) {
-        throw notFound("Task")
-    }
-    const exists = await taskDao.findByTaskName(body.taskName)
-    if (exists && exists.id !== Number(id)) {
-        throw alreadyExists("Task already exists")
-    }
-
-    return taskDao.modifyRow(id, body)
-}
-
-
 const remove = async (id) => {
     const task = await taskDao.getById(id)
     if (!task) {
@@ -78,5 +63,4 @@ function alreadyExists(value) {
     return error
 }
 
-
-module.exports = { listAll, findById, create, replace, modify, remove }
+module.exports = { listAll, findById, create, replace, remove }

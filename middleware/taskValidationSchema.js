@@ -83,8 +83,8 @@ const hoursInput = {
             errorMessage: "Hours must not be empty"
         },
         isInt: {
-            options: { min: 1, max: 2000 },
-            errorMessage: "Hour must be between 1 to 2000 hours"
+            options: { min: 1, max: 8000 },
+            errorMessage: "Hour must be between 1 to 8000 hours"
         },
         toInt: true
     }
